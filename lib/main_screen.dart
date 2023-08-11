@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_video_player/extentions.dart';
 import 'package:video_player/video_player.dart';
 
 class MainScreen extends StatefulWidget {
@@ -16,6 +19,9 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  
+
+  
   @override
   void dispose() {
     widget.controller.dispose();
@@ -24,6 +30,14 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final Timer timer = Timer.periodic(Duration(milliseconds: 200), (timer) {
+      setState(() {
+
+      });
+
+    }) ;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -99,9 +113,9 @@ class _MainScreenState extends State<MainScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('00:10',
+                              Text(widget.controller.value.position.toMinutesSeconds(),
                                   style: TextStyle(color: Colors.white)),
-                              const Text('10:00',
+                              Text(widget.controller.value.duration.toMinutesSeconds(),
                                   style: TextStyle(color: Colors.white)),
                             ],
                           ) ,
